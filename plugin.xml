@@ -19,14 +19,14 @@
 
     <!-- cordova -->
     <engines>
-        <engine name="cordova" version=">=3.6.0" />
-        <engine name="cordova-plugman" version=">=4.3.0" />
-        <engine name="cordova-windows" version=">=4.2.0" />
+        <engine name="cordova" version="3.5.0" />
+        <engine name="cordova-plugman" version="0.21.0-AG1005" />
+        <!--<engine name="cordova-windows" version=">=4.2.0" />-->
     </engines>
 
     <!-- dependencies -->
-    <dependency id="cordova-plugin-device" />
-    <dependency id="cordova-plugin-app-event" />
+    <!--<dependency id="cordova-plugin-device" />-->
+    <!--<dependency id="cordova-plugin-app-event" />-->
 
     <!-- info -->
     <info>
