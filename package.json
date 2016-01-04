@@ -28,15 +28,11 @@
   "engines": [
     {
       "name": "cordova",
-      "version": ">=3.6.0"
+      "version": "3.5.0"
     },
     {
       "name": "cordova-plugman",
-      "version": ">=4.3.0"
-    },
-    {
-      "name": "cordova-windows",
-      "version": ">=4.2.0"
+      "version": "0.21.0-AG1005"
     }
   ],
   "dependencies": {
