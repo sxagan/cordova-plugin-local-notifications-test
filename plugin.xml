@@ -79,13 +79,13 @@
     <!-- android -->
     <platform name="android">
 
+        <dependency id="android.support.v4" />
+
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalNotification">
                 <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification"/>
             </feature>
         </config-file>
-
-        <lib-file src="libs/android/android-support-v4.jar" />
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
 
