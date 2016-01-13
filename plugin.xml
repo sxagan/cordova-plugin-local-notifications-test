@@ -79,6 +79,8 @@
     <!-- android -->
     <platform name="android">
 
+        <framework src="com.android.support:support-v4:23.1.0" value="gradle" />
+
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalNotification">
                 <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification"/>
