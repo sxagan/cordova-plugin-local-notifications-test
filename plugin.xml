@@ -20,7 +20,7 @@
     <!-- cordova -->
     <engines>
         <engine name="cordova" version=">=3.5.0" />
-        <engine name="cordova-plugman" version=">=0.21.0-AG1005" />
+        <engine name="cordova-plugman" version="0.21.0-AG1005" />
         <!--<engine name="cordova-windows" version=">=4.2.0" />-->
     </engines>
 
@@ -79,13 +79,13 @@
     <!-- android -->
     <platform name="android">
 
-        <framework src="com.android.support:support-v4:23.1.0" value="gradle" />
-
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalNotification">
                 <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification"/>
             </feature>
         </config-file>
+
+        <lib-file src="libs/android/android-support-v4.jar" />
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
 
