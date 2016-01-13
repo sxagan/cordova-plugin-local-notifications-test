@@ -79,7 +79,7 @@
     <!-- android -->
     <platform name="android">
 
-        <framework src="com.android.support:support-v4" value="gradle" />
+        <framework src="com.android.support:support-v4:+" value="gradle" />
 
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="LocalNotification">
