@@ -20,7 +20,7 @@
     <!-- cordova -->
     <engines>
         <engine name="cordova" version=">=3.5.0" />
-        <engine name="cordova-plugman" version="0.21.0-AG1005" />
+        <engine name="cordova-plugman" version=">=0.21.0-AG1005" />
         <!--<engine name="cordova-windows" version=">=4.2.0" />-->
     </engines>
 
