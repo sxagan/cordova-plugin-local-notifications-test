@@ -128,6 +128,62 @@ LocalNotification.prototype = {
 
         return options.id;
     },
+    /**
+     * alias for add
+     *
+     * @param {Object} options
+     * @return {Number} The notification's ID
+     * incoming object
+      {
+                    id: 1,
+                    icon: 'icon',
+                    smallIcon: 'icon',
+                    sound: null,
+                    soundname: '/raw/s01',
+                    data: {
+                        posttitle: "Test Message 1",
+                        sender: "senderB",
+                        msg: "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+                        ts: new Date(), //date in iso format
+                        sendericon: ""
+                    }
+                }
+     */
+    append: function(options){
+        var toptions = {
+            message:    options.data.msg,
+            title:      options.data.posttitle,
+            autoCancel: true,
+            badge:      0,
+            id:         options.id || 1,
+            json:       JSON.stringify(options),
+            repeat:     ''
+        }
+        var aoptions    = this.mergeWithDefaults(toptions),
+            callbackFn = null;
+
+        if (aoptions.id) {
+            aoptions.id = aoptions.id.toString();
+        }
+
+        if (aoptions.date === undefined) {
+            aoptions.date = new Date();
+        }
+
+        if (typeof aoptions.date == 'object') {
+            aoptions.date = Math.round(aoptions.date.getTime()/1000);
+        }
+
+        if (['WinCE', 'Win32NT'].indexOf(device.platform)) {
+            callbackFn = function (cmd) {
+                eval(cmd);
+            };
+        }
+
+        cordova.exec(callbackFn, null, 'LocalNotification', 'add', [aoptions]);
+
+        return aoptions.id;
+    },
 
     /**
      * Cancels the specified notification
