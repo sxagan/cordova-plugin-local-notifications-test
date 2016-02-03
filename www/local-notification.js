@@ -246,7 +246,30 @@ LocalNotification.prototype = {
     promptForPermission: function () {
         cordova.exec(null, null, 'LocalNotification', 'promptForPermission', []);
     },
+    on: function (event, callback, scope) {
+        if (!this._listener[event]) {
+            this._listener[event] = [];
+        }
 
+        var item = [callback, scope || window];
+
+        this._listener[event].push(item);
+    },
+    un: function (event, callback){
+        var listener = this._listener[event];
+
+        if (!listener)
+            return;
+
+        for (var i = 0; i < listener.length; i++) {
+            var fn = listener[i][0];
+
+            if (fn == callback) {
+                listener.splice(i, 1);
+                break;
+            }
+        }
+    },
     /**
      * Occurs when a notification was added.
      *
