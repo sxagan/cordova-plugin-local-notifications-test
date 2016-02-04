@@ -259,6 +259,9 @@ LocalNotification.prototype = {
         this._listener[event].push(item);
     },
     un: function (event, callback){
+        if(!this._listener){
+            this._listener = {};
+        }
         var listener = this._listener[event];
 
         if (!listener)
