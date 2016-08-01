@@ -153,6 +153,7 @@ LocalNotification.prototype = {
         var toptions = {
             message:    options.data.msg,
             title:      options.data.posttitle,
+            date: options.date || null,
             autoCancel: true,
             badge:      0,
             id:         options.id || 1,
@@ -184,6 +185,43 @@ LocalNotification.prototype = {
 
         return aoptions.id;
     },
+    schedule: function(options){
+        var toptions = {
+            message:    options.data.msg,
+            title:      options.data.posttitle,
+            date: options.date || null,
+            autoCancel: true,
+            badge:      0,
+            id:         options.id || 1,
+            json:       JSON.stringify(options),
+            repeat:     ''
+        }
+        var aoptions    = this.mergeWithDefaults(toptions),
+            callbackFn = null;
+
+        if (aoptions.id) {
+            aoptions.id = aoptions.id.toString();
+        }
+
+        if (aoptions.date === undefined) {
+            aoptions.date = new Date();
+        }
+
+        if (typeof aoptions.date == 'object') {
+            aoptions.date = Math.round(aoptions.date.getTime()/1000);
+        }
+
+        if (['WinCE', 'Win32NT'].indexOf(device.platform)) {
+            callbackFn = function (cmd) {
+                eval(cmd);
+            };
+        }
+
+        cordova.exec(callbackFn, null, 'LocalNotification', 'add', [aoptions]);
+
+        return aoptions.id;
+    },
+
 
     /**
      * Cancels the specified notification
